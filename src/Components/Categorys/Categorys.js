@@ -1,6 +1,9 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Categorys = () => {
+  const navigate = useNavigate();
+
   const categories = [
     {
       title: 'Hollywood',
@@ -65,6 +68,21 @@ const Categorys = () => {
     marginBottom: '10px',
   };
 
+  const buttonStyle = {
+    marginTop: '40px',
+    padding: '10px 20px',
+    fontSize: '16px',
+    backgroundColor: '#4a00e0',
+    color: '#fff',
+    border: 'none',
+    borderRadius: '8px',
+    cursor: 'pointer',
+  };
+
+  const handleBackToHome = () => {
+    navigate('/home');
+  };
+
   return (
     <div style={containerStyle}>
       <h1 style={titleStyle}>Categories</h1>
@@ -78,6 +96,10 @@ const Categorys = () => {
           </div>
         ))}
       </div>
+
+      <button style={buttonStyle} onClick={handleBackToHome}>
+        Back to Home
+      </button>
     </div>
   );
 };

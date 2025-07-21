@@ -1,40 +1,29 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import Customcard from '../../Components/Customcard';
-import Navbar from '../../Components/Navbar/Navbar';
 
 const Home = () => {
-    const [output,setOutput]=useState([]);
-    useEffect(() => {
+  const [output, setOutput] = useState([]);
+
+  useEffect(() => {
     fetch("https://backend-crud-one.vercel.app/product")
       .then(response => response.json())
-      .then((data) => setOutput(data))
-      .catch(error => console.error('fetch error:', error));
+      .then(data => setOutput(data))
+      .catch(error => console.error('Fetch error:', error));
   }, []);
-  
 
   return (
     <>
-    <Navbar/>
-    <div className='container'>
-      
-    
-     <div className='row'>
-  {output.map((item,index)=>(
-    <div className='col-lg-4'>
-    <div key ={item.index}>
-
-    <Customcard 
-    item={item}
-  
-    />
-
-</div>
-</div>
-))}
-</div>
-</div>
+      <div className="container mt-4">
+        <div className="row">
+          {output.map((item, index) => (
+            <div className="col-lg-4 mb-4" key={item._id || index}>
+              <Customcard item={item} />
+            </div>
+          ))}
+        </div>
+      </div>
     </>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

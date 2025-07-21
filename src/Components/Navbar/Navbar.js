@@ -1,7 +1,15 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function Navbar() {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    // If using auth, clear token or session here
+    // localStorage.removeItem('token');
+    navigate('/'); // Go to login page
+  };
+
   return (
     <div
       style={{
@@ -20,10 +28,30 @@ function Navbar() {
       <div style={{ fontSize: '28px', fontWeight: 'bold', letterSpacing: '1px' }}>
         🎬 MovieBox
       </div>
-      <div style={{ display: 'flex', gap: '25px' }}>
-        <CustomLink to="/home">🏠Home</CustomLink>
-        <CustomLink to="/categorys">📚Categories</CustomLink>
-        <CustomLink to="/cart">⚰️View Cart</CustomLink>
+
+      <div style={{ display: 'flex', gap: '25px', alignItems: 'center' }}>
+        <CustomLink to="/home">🏠 Home</CustomLink>
+        <CustomLink to="/categorys">📚 Categories</CustomLink>
+        <CustomLink to="/cart">🛒 View Cart</CustomLink>
+
+        <button
+          onClick={handleLogout}
+          style={{
+            padding: '6px 14px',
+            backgroundColor: '#ff4d4f',
+            border: 'none',
+            color: '#fff',
+            fontWeight: 'bold',
+            fontSize: '14px',
+            borderRadius: '6px',
+            cursor: 'pointer',
+            transition: 'background-color 0.3s ease',
+          }}
+          onMouseEnter={(e) => (e.target.style.backgroundColor = '#d9363e')}
+          onMouseLeave={(e) => (e.target.style.backgroundColor = '#ff4d4f')}
+        >
+          🚪 Logout
+        </button>
       </div>
     </div>
   );
