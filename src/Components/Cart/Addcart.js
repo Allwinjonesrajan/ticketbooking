@@ -63,7 +63,7 @@ const Addcart = () => {
 
 
       <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-  <Link to="/" className="btn btn-primary mt-3">
+  <Link to="/Home" className="btn btn-primary mt-3">
     ← Back to Products
   </Link>
 </div>

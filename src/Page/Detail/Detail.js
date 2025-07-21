@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useCart } from '../../Components/CartContext/CartContext';
+import Navbar from '../../Components/Navbar/Navbar';
 
 const Detail = () => {
   const { id } = useParams();
@@ -36,6 +37,8 @@ const Detail = () => {
   };
 
   return (
+    <>
+    <Navbar/>
     <div className="container mt-5">
       <div className="row">
         <div className="col-lg-6">
@@ -46,10 +49,38 @@ const Detail = () => {
           <p><strong>Price:</strong> ₹{page.ticketprice}</p>
           <p><strong>Release Date:</strong> {page.releasedate}</p>
           <p><strong>Description:</strong> {page.description}</p>
-          <button onClick={handleAddToCart} className="btn btn-danger " style={{ color: "white", backgroundColor: "green", padding: "10px 20px", border: "none", borderRadius: "5px"}}>Add to Cart</button>
+          <div style={{ display: "flex", gap: "10px" }}>
+  <button 
+    onClick={handleAddToCart}  
+    className="btn btn-danger" 
+    style={{ 
+      color: "white", 
+      backgroundColor: "green", 
+      padding: "10px 22px", 
+      border: "none", 
+      borderRadius: "5px", 
+      fontSize: "18px"
+    }}
+  >
+    Add to Cart
+  </button>
+
+  <button 
+    className="btn btn-danger" 
+    onClick={() => navigate('/home')}
+    style={{ 
+      padding: "10px 25px", 
+      fontSize: "18px" 
+    }}
+  >
+    Back
+  </button>
+</div>
+
         </div>
       </div>
     </div>
+    </>
   );
 };
 

@@ -1,4 +1,3 @@
-// src/App.js
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Home from './Page/Home/Home';
@@ -12,7 +11,7 @@ import Login from './Components/Loginpage/Login';
 const App = () => {
   return (
     <CartProvider>
-      <Navbar />
+
       <Routes>
         <Route path='/' element={<Login/>}/>
         <Route path="/home" element={<Home />} />

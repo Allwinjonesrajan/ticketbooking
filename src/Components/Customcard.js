@@ -17,12 +17,15 @@ const CustomCard = ({ item }) => {
           />
         }
       >
-        <Meta title={item.name} description={item.title} />
+        <Meta title={item.name}/>
         <p><strong>Release Date:</strong> {item.releasedate}</p>
         <p><strong>Director:</strong> {item.director}</p>
         <p><strong>Budget:</strong> {item.budget}</p>
         <p><strong>Ticket Price:</strong> ₹{item.ticketprice}</p>
         <Link to={`/${item._id}`}>
+
+        
+
           <button type="button" className="btn btn-primary btn-sm mt-2">
             View Details
           </button>

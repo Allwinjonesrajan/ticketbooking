@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Customcard from '../../Components/Customcard';
-import Categorys from '../../Components/Categorys/Categorys';
-
+import Navbar from '../../Components/Navbar/Navbar';
 
 const Home = () => {
     const [output,setOutput]=useState([]);
@@ -15,6 +14,7 @@ const Home = () => {
 
   return (
     <>
+    <Navbar/>
     <div className='container'>
       
     
