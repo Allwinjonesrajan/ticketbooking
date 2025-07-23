@@ -31,19 +31,45 @@ const Addcart = () => {
       </h2>
 
       {cart.length === 0 ? (
-        <div
-          style={{
-            backgroundColor: '#ffebee',
-            padding: '20px',
-            borderRadius: '10px',
-            textAlign: 'center',
-            color: '#c62828',
-            fontWeight: 'bold',
-            fontSize: '18px',
-          }}
-        >
-          ⚠️ No items in your cart. Let's go shopping!
-        </div>
+        <>
+          <div
+            style={{
+              backgroundColor: '#ffebee',
+              padding: '20px',
+              borderRadius: '10px',
+              textAlign: 'center',
+              color: '#c62828',
+              fontWeight: 'bold',
+              fontSize: '18px',
+              marginBottom: '20px',
+            }}
+          >
+            ⚠️ No items in your cart. Let's go shopping!
+          </div>
+
+          <div style={{ textAlign: 'center', marginTop: '30px' }}>
+            <Link
+              to="/home"
+              style={{
+                backgroundColor: '#00c853',
+                color: 'white',
+                padding: '14px 28px',
+                borderRadius: '10px',
+                fontWeight: 'bold',
+                textDecoration: 'none',
+                fontSize: '16px',
+              }}
+              onMouseOver={(e) =>
+                (e.target.style.backgroundColor = '#009624')
+              }
+              onMouseOut={(e) =>
+                (e.target.style.backgroundColor = '#00c853')
+              }
+            >
+              🛒 Back to Products
+            </Link>
+          </div>
+        </>
       ) : (
         <>
           {cart.map((item, index) => (
@@ -52,8 +78,7 @@ const Addcart = () => {
               onMouseEnter={() => setHoveredCard(index)}
               onMouseLeave={() => setHoveredCard(null)}
               style={{
-                background:
-                  'linear-gradient(145deg, #ffffff, #f5f5f5, #e1f5fe)',
+                background: 'linear-gradient(145deg, #ffffff, #f5f5f5, #e1f5fe)',
                 border: '1px solid #ddd',
                 borderRadius: '20px',
                 boxShadow:
@@ -166,85 +191,83 @@ const Addcart = () => {
           >
             🧾 Total: ₹{totalPrice}
           </h4>
-        </>
-      )}
 
-      {cart.length > 0 && (
-        <div
-          style={{
-            marginTop: '70px',
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            flexWrap: 'wrap',
-          }}
-        >
-          <div>
-            <button
-              onClick={() => {
-                alert('✅ Payment Successful!');
-                clearCart();
-              }}
+          <div
+            style={{
+              marginTop: '70px',
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              flexWrap: 'wrap',
+            }}
+          >
+            <div>
+              <button
+                onClick={() => {
+                  alert('✅ Payment Successful!');
+                  clearCart();
+                }}
+                style={{
+                  backgroundColor: '#1565c0',
+                  color: 'white',
+                  fontWeight: 'bold',
+                  padding: '14px 28px',
+                  border: 'none',
+                  borderRadius: '10px',
+                  cursor: 'pointer',
+                  marginRight: '15px',
+                  fontSize: '16px',
+                }}
+                onMouseOver={(e) =>
+                  (e.target.style.backgroundColor = '#0d47a1')
+                }
+                onMouseOut={(e) =>
+                  (e.target.style.backgroundColor = '#1565c0')
+                }
+              >
+                💳 Pay Now
+              </button>
+
+              <button
+                onClick={clearCart}
+                style={{
+                  backgroundColor: '#fff',
+                  color: '#d32f2f',
+                  fontWeight: 'bold',
+                  padding: '14px 28px',
+                  border: '2px solid #d32f2f',
+                  borderRadius: '10px',
+                  cursor: 'pointer',
+                  fontSize: '16px',
+                }}
+              >
+                🗑️ Clear Cart
+              </button>
+            </div>
+
+            <Link
+              to="/home"
               style={{
-                backgroundColor: '#1565c0',
+                marginTop: '15px',
+                backgroundColor: '#00c853',
                 color: 'white',
-                fontWeight: 'bold',
                 padding: '14px 28px',
-                border: 'none',
                 borderRadius: '10px',
-                cursor: 'pointer',
-                marginRight: '15px',
+                fontWeight: 'bold',
+                textDecoration: 'none',
                 fontSize: '16px',
               }}
               onMouseOver={(e) =>
-                (e.target.style.backgroundColor = '#0d47a1')
+                (e.target.style.backgroundColor = '#009624')
               }
               onMouseOut={(e) =>
-                (e.target.style.backgroundColor = '#1565c0')
+                (e.target.style.backgroundColor = '#00c853')
               }
             >
-              💳 Pay Now
-            </button>
-
-            <button
-              onClick={clearCart}
-              style={{
-                backgroundColor: '#fff',
-                color: '#d32f2f',
-                fontWeight: 'bold',
-                padding: '14px 28px',
-                border: '2px solid #d32f2f',
-                borderRadius: '10px',
-                cursor: 'pointer',
-                fontSize: '16px',
-              }}
-            >
-              🗑️ Clear Cart
-            </button>
+              🛒 Continue Shopping
+            </Link>
           </div>
-
-          <Link
-            to="/home"
-            style={{
-              marginTop: '15px',
-              backgroundColor: '#00c853',
-              color: 'white',
-              padding: '14px 28px',
-              borderRadius: '10px',
-              fontWeight: 'bold',
-              textDecoration: 'none',
-              fontSize: '16px',
-            }}
-            onMouseOver={(e) =>
-              (e.target.style.backgroundColor = '#009624')
-            }
-            onMouseOut={(e) =>
-              (e.target.style.backgroundColor = '#00c853')
-            }
-          >
-            🛒 Continue Shopping
-          </Link>
-        </div>
+        </>
       )}
     </div>
   );
