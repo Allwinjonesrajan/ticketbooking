@@ -25,15 +25,13 @@ const Detail = () => {
 
   if (loading) {
     return (
-      <div style={{ textAlign: 'center', marginTop: '50px', fontSize: '20px', color: '#555' }}>
-        Loading...
-      </div>
+      <div className="text-center mt-5 text-secondary fs-4">Loading...</div>
     );
   }
 
   if (!page) {
     return (
-      <div style={{ textAlign: 'center', marginTop: '50px', fontSize: '20px', color: 'crimson' }}>
+      <div className="text-center mt-5 text-danger fs-4">
         Product not found.
       </div>
     );
@@ -51,79 +49,50 @@ const Detail = () => {
 
   return (
     <div
+      className="container py-5"
       style={{
         minHeight: '100vh',
-        padding: '40px',
         background: 'linear-gradient(to bottom right, #1e3c72, #2a5298)',
-        fontFamily: `'Segoe UI', Tahoma, Geneva, Verdana, sans-serif`,
         color: '#f0f0f0',
       }}
     >
-      <div
-        style={{
-          display: 'flex',
-          gap: '40px',
-          background: 'rgba(0, 0, 0, 0.4)',
-          padding: '30px',
-          borderRadius: '16px',
-          boxShadow: '0 8px 25px rgba(0,0,0,0.4)',
-          maxWidth: '1000px',
-          margin: 'auto',
-        }}
-      >
-        <div style={{ flex: 1 }}>
+      <div className="row g-4 bg-dark bg-opacity-50 p-4 rounded shadow-lg align-items-center">
+        {/* Image Section */}
+        <div className="col-md-6">
           <img
             src={page.image}
             alt={page.name}
-            style={{
-              width: '100%',
-              height: 'auto',
-              borderRadius: '12px',
-              boxShadow: '0 4px 12px rgba(0, 0, 0, 0.3)',
-            }}
+            className="img-fluid rounded shadow-sm w-100"
+            style={{ maxHeight: '500px', objectFit: 'cover' }}
           />
         </div>
-        <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-          <h2 style={{ fontSize: '30px', marginBottom: '10px', color: '#ffd700' }}>{page.name}</h2>
-          <p style={{ fontSize: '18px', marginBottom: '8px' }}>
+
+        {/* Details Section */}
+        <div className="col-md-6">
+          <h2 className="text-warning mb-3 text-center text-md-start">
+            {page.name}
+          </h2>
+          <p className="fs-5 mb-2 text-center text-md-start">
             <strong>🎟 Price:</strong> ₹{page.ticketprice}
           </p>
-          <p style={{ fontSize: '18px', marginBottom: '8px' }}>
+          <p className="fs-5 mb-2 text-center text-md-start">
             <strong>📆 Release Date:</strong> {page.releasedate}
           </p>
-          <p style={{ fontSize: '17px', marginBottom: '20px', lineHeight: '1.6' }}>
+          <p className="fs-6 mb-4 text-center text-md-start">
             <strong>📝 Description:</strong> {page.description}
           </p>
-          <div style={{ display: 'flex', gap: '15px' }}>
+
+          {/* Buttons */}
+          <div className="d-flex flex-column flex-sm-row gap-3 w-100">
             <button
+              className="btn btn-success fw-bold w-100"
               onClick={handleAddToCart}
-              style={{
-                backgroundColor: '#28a745',
-                padding: '12px 25px',
-                fontSize: '16px',
-                border: 'none',
-                borderRadius: '8px',
-                color: 'white',
-                fontWeight: 'bold',
-                cursor: 'pointer',
-                transition: '0.3s',
-              }}
             >
               🛒 Add to Cart
             </button>
             <button
+              className="btn btn-danger fw-bold w-100"
               onClick={() => navigate('/home')}
-              style={{
-                backgroundColor: '#dc3545',
-                padding: '12px 25px',
-                fontSize: '16px',
-                border: 'none',
-                borderRadius: '8px',
-                color: 'white',
-                fontWeight: 'bold',
-                cursor: 'pointer',
-                transition: '0.3s',
-              }}
             >
               🔙 Back to Home
             </button>

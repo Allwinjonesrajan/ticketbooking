@@ -13,8 +13,8 @@ const App = () => {
 
   return (
     <CartProvider>
-      {/* Show Navbar except on Login page (path is "/") */}
-      {location.pathname !== '/' && <Navbar />}
+      {location.pathname !== '/' && location.pathname !== '/cart' && location.pathname !== '/categorys'  && <Navbar />}
+
 
       <Routes>
         <Route path="/" element={<Login />} />
